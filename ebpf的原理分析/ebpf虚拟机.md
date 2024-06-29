@@ -14,6 +14,24 @@ eBPF虚拟机使用10个通用寄存器，编号从0到9。此外，寄存器10�
 
 需要注意的是，这些eBPF寄存器在eBPF虚拟机中是软件实现的。它们在Linux内核源代码的[include/uapi/linux/bpf.h](https://elixir.bootlin.com/linux/v6.10-rc5/source/include/uapi/linux/bpf.h)头文件中以BPF_REG_0到BPF_REG_10枚举出现。
 
+、、、
+/* Register numbers */
+enum {
+	BPF_REG_0 = 0,
+	BPF_REG_1,
+	BPF_REG_2,
+	BPF_REG_3,
+	BPF_REG_4,
+	BPF_REG_5,
+	BPF_REG_6,
+	BPF_REG_7,
+	BPF_REG_8,
+	BPF_REG_9,
+	BPF_REG_10,
+	__MAX_BPF_REG,
+};
+、、、
+
 在执行eBPF程序之前，上下文参数被加载到寄存器1中。程序执行后，返回值存储在寄存器0中。
 
 在eBPF代码中调用函数时，函数的参数被放置在寄存器1到寄存器5中。如果提供的参数少于五个，则只会使用其中的部分寄存器。
